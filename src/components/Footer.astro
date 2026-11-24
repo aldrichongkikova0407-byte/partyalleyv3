@@ -1,0 +1,26 @@
+---
+import Link from './Link.astro';
+import LogoLink from './LogoLink.astro';
+import { brand, mainNavigation } from '../data/global';
+
+// Preview-only: enable each destination here when its page is ready.
+const availablePaths: readonly string[] = ['/', '/services/', '/contact/'];
+---
+
+<footer class="bg-[#F1EFED] text-stone-900">
+	<div class="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-2 lg:px-8">
+		<div>
+			<div class="w-32 max-w-full sm:w-36">
+				<LogoLink {...brand.homeLink} image={brand.image} />
+			</div>
+			<p class="mt-4 max-w-sm leading-relaxed">Event production and management for corporate functions and personal celebrations.</p>
+		</div>
+		<nav aria-label="Footer navigation">
+			<ul class="flex flex-col items-start gap-3 font-medium">
+				{mainNavigation.map((item) => (
+					<li>{availablePaths.includes(item.href) ? <Link {...item} /> : <span class="text-stone-500">{item.label}</span>}</li>
+				))}
+			</ul>
+		</nav>
+	</div>
+</footer>

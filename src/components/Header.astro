@@ -1,0 +1,55 @@
+---
+import Link from './Link.astro';
+import LogoLink from './LogoLink.astro';
+import { brand, mainNavigation, sharedCta } from '../data/global';
+
+// Preview-only: enable each destination here when its page is ready.
+const availablePaths: readonly string[] = ['/', '/services/', '/contact/'];
+---
+
+<header class="border-b border-stone-200 bg-white text-stone-900">
+	<div class="mx-auto grid max-w-7xl grid-cols-[1fr_auto] items-center gap-4 px-4 py-4 sm:px-6 lg:grid-cols-[1fr_auto_1fr] lg:px-8">
+		<div class="w-32 max-w-full sm:w-36">
+			<LogoLink {...brand.homeLink} image={brand.image} />
+		</div>
+
+		<nav aria-label="Main navigation" class="hidden lg:block">
+			<ul class="flex items-center gap-6 text-sm font-medium">
+				{mainNavigation.map((item) => (
+					<li>{availablePaths.includes(item.href) ? <Link {...item} /> : <span class="text-stone-500">{item.label}</span>}</li>
+				))}
+			</ul>
+		</nav>
+
+		<div class="hidden justify-self-end lg:block">
+			<span class="inline-flex rounded-md bg-stone-100 px-4 py-2 font-semibold text-stone-500">{sharedCta.label}</span>
+		</div>
+
+		<button type="button" aria-expanded="false" aria-controls="mobile-navigation" class="rounded-md px-3 py-2 font-semibold text-stone-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#B93442] lg:hidden" data-menu-toggle>Menu</button>
+	</div>
+
+	<div id="mobile-navigation" hidden class="border-t border-stone-200 px-4 py-4 sm:px-6 lg:hidden">
+		<nav aria-label="Mobile navigation">
+			<ul class="flex flex-col items-start gap-4 font-medium">
+				{mainNavigation.map((item) => (
+					<li>{availablePaths.includes(item.href) ? <Link {...item} /> : <span class="text-stone-500">{item.label}</span>}</li>
+				))}
+			</ul>
+		</nav>
+		<div class="mt-5">
+			<span class="inline-flex rounded-md bg-stone-100 px-4 py-2 font-semibold text-stone-500">{sharedCta.label}</span>
+		</div>
+	</div>
+</header>
+
+<script>
+	const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+	const menu = document.querySelector<HTMLElement>('#mobile-navigation');
+
+	toggle?.addEventListener('click', () => {
+		if (!menu) return;
+		const expanded = toggle.getAttribute('aria-expanded') === 'true';
+		toggle.setAttribute('aria-expanded', String(!expanded));
+		menu.hidden = expanded;
+	});
+</script>

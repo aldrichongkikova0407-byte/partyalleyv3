@@ -1,0 +1,22 @@
+---
+interface Props {
+	href: string;
+	label: string;
+	isExternal?: boolean;
+	variant?: 'text' | 'primary' | 'secondary';
+}
+
+const { href, label, isExternal = false, variant = 'text' } = Astro.props;
+const variants = {
+	text: 'text-inherit underline underline-offset-4 hover:no-underline',
+	primary: 'inline-flex items-center rounded-md bg-[#B93442] px-4 py-2 font-semibold text-white no-underline hover:bg-[#992d39]',
+	secondary: 'text-[#8a2933] underline decoration-[#8a2933]/50 underline-offset-4 hover:decoration-current',
+};
+---
+
+<a
+	href={href}
+	aria-label={label}
+	data-external={isExternal ? 'true' : 'false'}
+	class:list={['focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#B93442]', variants[variant]]}
+><slot>{label}</slot></a>

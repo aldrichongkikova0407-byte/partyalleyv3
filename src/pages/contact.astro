@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact Party Alley" description="Tell Party Alley about your event and the support you’re looking for.">
+	<section class="bg-white px-5 py-16 text-stone-900 sm:px-6 md:py-24">
+		<div class="mx-auto max-w-2xl">
+			<h1 class="text-center text-4xl font-bold tracking-tight sm:text-5xl">Contact Party Alley</h1>
+			<p class="mt-6 text-center leading-relaxed text-stone-600">Tell us about your event and the support you’re looking for.</p>
+			<form class="mt-10 space-y-6" onsubmit="return false">
+				<div>
+					<label for="name" class="mb-2 block font-semibold">Name (required)</label>
+					<input id="name" name="name" type="text" autocomplete="name" required class="w-full rounded-md border border-stone-400 bg-white px-4 py-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B93442]" />
+				</div>
+				<div>
+					<label for="email" class="mb-2 block font-semibold">Email (required)</label>
+					<input id="email" name="email" type="email" autocomplete="email" required class="w-full rounded-md border border-stone-400 bg-white px-4 py-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B93442]" />
+				</div>
+				<div>
+					<label for="phone" class="mb-2 block font-semibold">Phone (optional)</label>
+					<input id="phone" name="phone" type="tel" autocomplete="tel" class="w-full rounded-md border border-stone-400 bg-white px-4 py-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B93442]" />
+				</div>
+				<div>
+					<label for="event-details" class="mb-2 block font-semibold">Event Details (required)</label>
+					<textarea id="event-details" name="eventDetails" rows="6" required class="w-full rounded-md border border-stone-400 bg-white px-4 py-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B93442]"></textarea>
+				</div>
+				<div class="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+					<button type="submit" disabled class="rounded-md bg-[#B93442] px-6 py-3 font-semibold text-white opacity-70">Send Inquiry</button>
+					<p class="text-sm text-stone-600">This form is in preview. Inquiries aren’t being sent yet.</p>
+				</div>
+			</form>
+		</div>
+	</section>
+</Layout>

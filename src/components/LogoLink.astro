@@ -1,0 +1,18 @@
+---
+import type { ImageMetadata } from 'astro';
+import Link from './Link.astro';
+
+interface Props {
+	href: string;
+	label: string;
+	image: string | ImageMetadata;
+	isExternal?: boolean;
+}
+
+const { href, label, image, isExternal = false } = Astro.props;
+const src = typeof image === 'string' ? image : image.src;
+---
+
+<Link {href} {label} {isExternal}>
+	<img {src} alt="" class="h-auto max-w-full" />
+</Link>
