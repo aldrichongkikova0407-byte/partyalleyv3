@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Link from '../components/Link.astro';
+
+const groups = [
+	{
+		title: 'Main Pages',
+		pages: [
+			{ label: 'Home', href: '/', description: 'Get an overview of Party Alley’s event production and management services.' },
+			{ label: 'About Us', href: '/about/', description: 'Learn about Party Alley and its approach to corporate functions and personal celebrations.' },
+			{ label: 'Services', href: '/services/', description: 'Browse the four event services Party Alley offers.' },
+			{ label: 'Contact Us', href: '/contact/', description: 'Find the inquiry form and see what details to prepare for your event.' },
+			{ label: 'Thank You', href: '/thank-you/', description: 'View the confirmation page for event inquiries.' },
+			{ label: 'Sitemap', href: '/sitemap/', description: 'Find links to Party Alley’s pages and event services in one place.' },
+		],
+	},
+	{
+		title: 'Event Services',
+		pages: [
+			{ label: 'Event Planning & Management', href: '/services/event-planning-management/', description: 'Learn how Party Alley helps organize event details and manage the program on the day.' },
+			{ label: 'Event Styling & Decoration', href: '/services/event-styling-decoration/', description: 'See how Party Alley helps shape the look and atmosphere of your event.' },
+			{ label: 'Catering & Food Services', href: '/services/catering-food-services/', description: 'Explore catering support for your event, guest count, and schedule.' },
+			{ label: 'Event Production & Equipment', href: '/services/event-production-equipment/', description: 'Learn about setup and equipment support for your venue and program.' },
+		],
+	},
+];
+---
+
+<Layout title="Sitemap | Party Alley" description="Find Party Alley’s main pages, event services, and contact information.">
+	<section class="bg-white px-6 py-16 text-stone-900 md:py-24">
+		<div class="mx-auto max-w-[68rem]">
+			<h1 class="text-4xl font-bold tracking-tight sm:text-5xl">Sitemap</h1>
+			<div class="mt-8 grid items-start gap-6 md:grid-cols-2">
+			{groups.map((group) => (
+				<section class="min-w-0 rounded-2xl border border-stone-200 bg-[#F5F5F5] p-6 md:p-8">
+					<h2 class="text-2xl font-bold">{group.title}</h2>
+					<ul class="mt-6 divide-y divide-stone-200">
+						{group.pages.map((page) => (
+							<li class="min-w-0 py-5 first:pt-0 last:pb-0 [&_a]:font-semibold [&_a]:underline [&_a]:break-words [&_a:hover]:text-[#B93442] [&_a:hover]:underline">
+								<Link href={page.href} label={page.label} />
+								<p class="mt-2 leading-relaxed text-stone-600">{page.description}</p>
+							</li>
+						))}
+					</ul>
+				</section>
+			))}
+			</div>
+		</div>
+	</section>
+</Layout>

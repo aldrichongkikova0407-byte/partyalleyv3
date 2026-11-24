@@ -4,7 +4,7 @@ import LogoLink from './LogoLink.astro';
 import { brand, mainNavigation } from '../data/global';
 
 // Preview-only: enable each destination here when its page is ready.
-const availablePaths: readonly string[] = ['/', '/services/', '/contact/'];
+const availablePaths: readonly string[] = ['/', '/about/', '/services/', '/portfolio/', '/contact/'];
 ---
 
 <footer class="bg-[#F1EFED] text-stone-900">
@@ -20,6 +20,7 @@ const availablePaths: readonly string[] = ['/', '/services/', '/contact/'];
 				{mainNavigation.map((item) => (
 					<li>{availablePaths.includes(item.href) ? <Link {...item} /> : <span class="text-stone-500">{item.label}</span>}</li>
 				))}
+				<li><Link href="/sitemap/" label="Sitemap" /></li>
 			</ul>
 		</nav>
 	</div>
